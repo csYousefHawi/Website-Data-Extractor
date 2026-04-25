@@ -13,31 +13,23 @@ from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-# إعدادات الواجهة الرسومية المتقدمة
-ctk.set_appearance_mode("dark")  # وضع داكن أنيق
-ctk.set_default_color_theme("blue")  # نظام ألوان أزرق
-
+ctk.set_appearance_mode("dark")  
+ctk.set_default_color_theme("blue") 
 class CyberExtractorGUI(ctk.CTk):
     def __init__(self):
         super().__init__()
         
-        # إعدادات النافذة الرئيسية
         self.title("🛡️ Cyber Data Extractor Pro v2.0")
         self.geometry("900x750")
         self.minsize(800, 650)
         
-        # تعيين أيقونة النافذة (اختياري - إذا كان لديك ملف ico)
-        # self.iconbitmap("icon.ico")
         
-        # إطار رئيسي مع مسافات
         self.main_frame = ctk.CTkFrame(self, fg_color="transparent")
         self.main_frame.pack(fill="both", expand=True, padx=20, pady=20)
         
-        # ========== الهيدر ==========
         self.header_frame = ctk.CTkFrame(self.main_frame, fg_color="transparent")
         self.header_frame.pack(fill="x", pady=(0, 20))
         
-        # عنوان رئيسي مع تأثير
         self.title_label = ctk.CTkLabel(
             self.header_frame, 
             text="🛡️ CYBER DATA EXTRACTOR", 
@@ -54,11 +46,9 @@ class CyberExtractorGUI(ctk.CTk):
         )
         self.subtitle_label.pack()
         
-        # ========== منطقة الإدخال ==========
         self.input_frame = ctk.CTkFrame(self.main_frame, corner_radius=15, border_width=2, border_color="#2b2d42")
         self.input_frame.pack(fill="x", pady=(0, 20), padx=10)
         
-        # عنوان القسم
         self.section1_label = ctk.CTkLabel(
             self.input_frame, 
             text="⚙️ CONFIGURATION", 
@@ -67,7 +57,6 @@ class CyberExtractorGUI(ctk.CTk):
         )
         self.section1_label.pack(anchor="w", padx=20, pady=(15, 10))
         
-        # حقل الرابط
         self.url_label = ctk.CTkLabel(self.input_frame, text="Target URL:", font=ctk.CTkFont(size=14, weight="bold"))
         self.url_label.pack(anchor="w", padx=20)
         
@@ -80,7 +69,6 @@ class CyberExtractorGUI(ctk.CTk):
         )
         self.url_entry.pack(pady=(5, 15), padx=20)
         
-        # إطار اختيار العمق
         self.depth_frame = ctk.CTkFrame(self.input_frame, fg_color="transparent")
         self.depth_frame.pack(fill="x", pady=(0, 20), padx=20)
         
@@ -101,14 +89,12 @@ class CyberExtractorGUI(ctk.CTk):
         )
         self.depth_menu.pack(side="left")
         
-        # ========== أزرار التحكم ==========
         self.control_frame = ctk.CTkFrame(self.main_frame, corner_radius=15, border_width=2, border_color="#2b2d42")
         self.control_frame.pack(fill="x", pady=(0, 20), padx=10)
         
         self.button_frame = ctk.CTkFrame(self.control_frame, fg_color="transparent")
         self.button_frame.pack(pady=20)
         
-        # زر البدء مع تأثير
         self.start_btn = ctk.CTkButton(
             self.button_frame, 
             text="🚀 START EXTRACTION", 
@@ -122,7 +108,6 @@ class CyberExtractorGUI(ctk.CTk):
         )
         self.start_btn.pack(side="left", padx=10)
         
-        # زر المسح
         self.clear_btn = ctk.CTkButton(
             self.button_frame, 
             text="🗑️ CLEAR LOGS", 
@@ -136,7 +121,6 @@ class CyberExtractorGUI(ctk.CTk):
         )
         self.clear_btn.pack(side="left", padx=10)
         
-        # زر فتح مجلد النتائج
         self.open_folder_btn = ctk.CTkButton(
             self.button_frame, 
             text="📁 OPEN RESULTS", 
