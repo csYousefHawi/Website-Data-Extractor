@@ -7,17 +7,16 @@ from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
 
 def get_html(url):
-    """استخدام Selenium لجلب المحتوى الديناميكي وتجاوز حماية الـ SSL """
     options = Options()
-    options.add_argument("--headless")  # التشغيل في الخلفية لسرعة الأداء
-    options.add_argument("--ignore-certificate-errors")  # تجاوز أخطاء SSL
+    options.add_argument("--headless")  
+    options.add_argument("--ignore-certificate-errors") 
     options.add_argument("user-agent=Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)")
 
     try:
         service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
         driver.get(url)
-        time.sleep(3)  # انتظار تحميل الجافا سكريبت 
+        time.sleep(3)  
         
         html_content = driver.page_source
         driver.quit()
