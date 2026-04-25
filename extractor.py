@@ -1,4 +1,5 @@
-# extractor.py
+# extractor , extracts data (emails, links, images, news)
+
 import re
 from urllib.parse import urljoin
 from config import NEWS_KEYWORDS
