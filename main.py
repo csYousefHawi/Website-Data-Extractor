@@ -13,7 +13,7 @@ def start_crawl(start_url):
 
     while to_visit:
         url, depth = to_visit.pop(0)
-        if url in visited or depth > MAX_CRAWL_DEPTH: continue # تجنب الدوائر اللانهائية [cite: 50, 51]
+        if url in visited or depth > MAX_CRAWL_DEPTH: continue 
         
         print(f"[*] Crawling: {url} (Depth: {depth})")
         visited.add(url)
@@ -28,7 +28,7 @@ def start_crawl(start_url):
         links = extract_links(soup, url)
         all_results["links"].update(links)
 
-        # إضافة الروابط الداخلية فقط [cite: 48, 49]
+       
         if depth < MAX_CRAWL_DEPTH:
             for link in links:
                 if urlparse(link).netloc == domain:
